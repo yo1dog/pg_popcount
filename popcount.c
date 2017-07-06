@@ -7,7 +7,7 @@ PG_MODULE_MAGIC;
 PG_FUNCTION_INFO_V1(popcount_smallint);
 Datum popcount_smallint(PG_FUNCTION_ARGS) {
   int16 sv = PG_GETARG_INT16(0);
-  u_int16_t v = 0 | sv;
+  u_int16_t v = (u_int16_t)sv;
   
   // http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
   unsigned int c; // c accumulates the total bits set in v
@@ -21,7 +21,7 @@ Datum popcount_smallint(PG_FUNCTION_ARGS) {
 PG_FUNCTION_INFO_V1(popcount_int);
 Datum popcount_int(PG_FUNCTION_ARGS) {
   int32 sv = PG_GETARG_INT32(0);
-  u_int32_t v = 0 | sv;
+  u_int32_t v = (u_int32_t)sv;
   
   // http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
   unsigned int c; // c accumulates the total bits set in v
@@ -35,7 +35,7 @@ Datum popcount_int(PG_FUNCTION_ARGS) {
 PG_FUNCTION_INFO_V1(popcount_bigint);
 Datum popcount_bigint(PG_FUNCTION_ARGS) {
   int64 sv = PG_GETARG_INT64(0);
-  u_int64_t v = 0 | sv;
+  u_int64_t v = (u_int64_t)sv;
   
   // http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
   unsigned int c; // c accumulates the total bits set in v
