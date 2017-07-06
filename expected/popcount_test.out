@@ -1,0 +1,73 @@
+CREATE EXTENSION popcount;
+SELECT popcount_smallint(B'0000000000000000'::int::smallint);
+ popcount_smallint 
+-------------------
+                 0
+(1 row)
+
+SELECT popcount_smallint(B'0111111111111111'::int::smallint);
+ popcount_smallint 
+-------------------
+                15
+(1 row)
+
+SELECT popcount_smallint(B'0010110110101101'::int::smallint);
+ popcount_smallint 
+-------------------
+                 9
+(1 row)
+
+SELECT popcount_int(B'00000000000000000000000000000000'::int);
+ popcount_int 
+--------------
+            0
+(1 row)
+
+SELECT popcount_int(B'11111111111111111111111111111111'::int);
+ popcount_int 
+--------------
+           32
+(1 row)
+
+SELECT popcount_int(B'10101101101011011010110110101101'::int);
+ popcount_int 
+--------------
+           20
+(1 row)
+
+SELECT popcount_bigint(B'0000000000000000000000000000000000000000000000000000000000000000'::bigint);
+ popcount_bigint 
+-----------------
+               0
+(1 row)
+
+SELECT popcount_bigint(B'1111111111111111111111111111111111111111111111111111111111111111'::bigint);
+ popcount_bigint 
+-----------------
+              64
+(1 row)
+
+SELECT popcount_bigint(B'1010110110101101101011011010110110101101101011011010110110101101'::bigint);
+ popcount_bigint 
+-----------------
+              40
+(1 row)
+
+SELECT popcount_varbit(B'000000000000000000000000');
+ popcount_varbit 
+-----------------
+               0
+(1 row)
+
+SELECT popcount_varbit(B'111111111111111111111111');
+ popcount_varbit 
+-----------------
+              24
+(1 row)
+
+SELECT popcount_varbit(B'101011011010110110101101');
+ popcount_varbit 
+-----------------
+              15
+(1 row)
+
